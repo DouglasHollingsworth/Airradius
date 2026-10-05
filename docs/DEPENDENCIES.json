@@ -1,0 +1,245 @@
+{
+  "runtimeDependencies": [],
+  "buildTestDependencies": [
+    {
+      "package": "ajv",
+      "version": "8.20.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "ajv-formats",
+      "version": "3.0.1",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "ansi-regex",
+      "version": "5.0.1",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "ansi-styles",
+      "version": "4.3.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "axe-core",
+      "version": "4.14.0",
+      "license": "MPL-2.0",
+      "dev": true
+    },
+    {
+      "package": "camelcase",
+      "version": "5.3.1",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "cliui",
+      "version": "6.0.0",
+      "license": "ISC",
+      "dev": true
+    },
+    {
+      "package": "color-convert",
+      "version": "2.0.1",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "color-name",
+      "version": "1.1.4",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "decamelize",
+      "version": "1.2.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "dijkstrajs",
+      "version": "1.0.3",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "emoji-regex",
+      "version": "8.0.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "fast-uri",
+      "version": "3.1.8",
+      "license": "BSD-3-Clause",
+      "dev": true
+    },
+    {
+      "package": "find-up",
+      "version": "4.1.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "get-caller-file",
+      "version": "2.0.5",
+      "license": "ISC",
+      "dev": true
+    },
+    {
+      "package": "is-fullwidth-code-point",
+      "version": "3.0.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "json-schema-traverse",
+      "version": "1.0.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "jsqr",
+      "version": "1.4.0",
+      "license": "Apache-2.0",
+      "dev": true
+    },
+    {
+      "package": "locate-path",
+      "version": "5.0.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "p-limit",
+      "version": "2.3.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "p-locate",
+      "version": "4.1.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "p-try",
+      "version": "2.2.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "path-exists",
+      "version": "4.0.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "playwright",
+      "version": "1.63.0",
+      "license": "Apache-2.0",
+      "dev": true
+    },
+    {
+      "package": "playwright-core",
+      "version": "1.63.0",
+      "license": "Apache-2.0",
+      "dev": true
+    },
+    {
+      "package": "pngjs",
+      "version": "7.0.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "qrcode",
+      "version": "1.5.4",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "qrcode/node_modules/pngjs",
+      "version": "5.0.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "require-directory",
+      "version": "2.1.1",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "require-from-string",
+      "version": "2.0.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "require-main-filename",
+      "version": "2.0.0",
+      "license": "ISC",
+      "dev": true
+    },
+    {
+      "package": "set-blocking",
+      "version": "2.0.0",
+      "license": "ISC",
+      "dev": true
+    },
+    {
+      "package": "string-width",
+      "version": "4.2.3",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "strip-ansi",
+      "version": "6.0.1",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "which-module",
+      "version": "2.0.1",
+      "license": "ISC",
+      "dev": true
+    },
+    {
+      "package": "wrap-ansi",
+      "version": "6.2.0",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "y18n",
+      "version": "4.0.3",
+      "license": "ISC",
+      "dev": true
+    },
+    {
+      "package": "yargs",
+      "version": "15.4.1",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "package": "yargs-parser",
+      "version": "18.1.3",
+      "license": "ISC",
+      "dev": true
+    }
+  ]
+}

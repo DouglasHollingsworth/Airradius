@@ -1,0 +1,7 @@
+// Re-render the actual semantic card with generated QR, not a screenshot website.
+import QRCode from 'qrcode';import {chromium} from 'playwright';import path from 'node:path';
+const root=process.cwd(),base=process.env.BASE_URL||'http://127.0.0.1:4173';
+await QRCode.toFile(path.join(root,'assets/site-qr.svg'),'https://airradius.vercel.app',{type:'svg',errorCorrectionLevel:'H',margin:4,color:{dark:'#020b14',light:'#ffffff'}});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+const page=await browser.newPage({viewport:{width:1200,height:900},deviceScaleFactor:3});await page.goto(base+'/card/');await page.locator('.card-qr img').waitFor();await page.locator('.digital-card').screenshot({path:path.join(root,'assets/card-wide.png')});
+await page.setViewportSize({width:422,height:1100});await page.addStyleTag({content:'.digital-card{max-width:390px;min-height:844px}.card-content{height:844px}.digital-card h2{margin-top:65px;font-size:47px}.digital-card .card-landscape{top:160px;height:490px}.card-founder{bottom:180px}.card-qr{width:108px;bottom:28px}.card-url{bottom:68px;font-size:9px}.card-description{font-size:12px;max-width:290px}'});await page.locator('.digital-card').screenshot({path:path.join(root,'assets/card-portrait.png'),scale:'device'});await browser.close();console.log('Rendered wide and portrait cards; run browser QR decode checks afterward.');
