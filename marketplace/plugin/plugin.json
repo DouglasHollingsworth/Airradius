@@ -1,0 +1,107 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "airradius-training",
+  "version": "0.1.0",
+  "description": "Practice evidence-backed correlation, draft handoffs and replay review using two fixed fictional scenarios. The server executes deterministic rules and returns evidence references, modes, limitations and audit information. No live sensing or operational control.",
+  "author": {
+    "name": "Douglas Hollingsworth",
+    "url": "https://airradius.kaij4u.chatgpt.site/connect/"
+  },
+  "homepage": "https://airradius.kaij4u.chatgpt.site/connect/",
+  "repository": "https://github.com/DouglasHollingsworth/Airradius",
+  "license": "UNLICENSED",
+  "keywords": [
+    "training",
+    "fictional",
+    "evidence",
+    "replay"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "AirRadius Training",
+        "shortDescription": "Fictional airspace workflows",
+        "longDescription": "Practice evidence-backed correlation, draft handoffs and replay review using two fixed fictional scenarios. The server executes deterministic rules and returns evidence references, modes, limitations and audit information. No live sensing or operational control.",
+        "developerName": "Douglas Hollingsworth",
+        "category": "Productivity",
+        "capabilities": [
+          "MCP",
+          "Skills"
+        ],
+        "websiteURL": "https://airradius.kaij4u.chatgpt.site/connect/",
+        "supportURL": "https://airradius.kaij4u.chatgpt.site/support/",
+        "privacyPolicyURL": "https://airradius.kaij4u.chatgpt.site/privacy.html",
+        "termsOfServiceURL": "https://airradius.kaij4u.chatgpt.site/terms.html",
+        "defaultPrompt": [
+          "Correlate the duplicate-and-delay fictional scenario.",
+          "Draft a training handoff with evidence and limitations.",
+          "Review the separated-observations replay."
+        ],
+        "brandColor": "#008CFF",
+        "brandColorDark": "#00BFFF",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "onboardingSkill": "./skills/get-started/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Correlate delayed duplicate candidates",
+              "prompt": "Correlate the duplicate-and-delay fictional scenario.",
+              "tools_triggered": "airradius_correlate_events",
+              "expected_behavior": "Explain duplicate candidates and delayed ingestion using evidence references. Preserve uncertainty; SIMULATED deterministic execution."
+            },
+            {
+              "description": "Keep separated observations separate",
+              "prompt": "Correlate the separated-observations fictional scenario.",
+              "tools_triggered": "airradius_correlate_events",
+              "expected_behavior": "Do not merge spatially separated observations without evidence."
+            },
+            {
+              "description": "Draft a training handoff",
+              "prompt": "Draft a handoff for duplicate-and-delay.",
+              "tools_triggered": "airradius_draft_handoff",
+              "expected_behavior": "Return an evidence-backed SIMULATED draft. Do not send, assign, approve or claim acknowledgment."
+            },
+            {
+              "description": "Review a delayed replay",
+              "prompt": "Analyze the duplicate-and-delay replay.",
+              "tools_triggered": "airradius_analyze_replay",
+              "expected_behavior": "Return REPLAY chronology distinguishing observation and ingestion times with limitations."
+            },
+            {
+              "description": "Review separated replay evidence",
+              "prompt": "Analyze the separated-observations replay.",
+              "tools_triggered": "airradius_analyze_replay",
+              "expected_behavior": "Reference fictional evidence and spatial separation without unsupported identity or causal claims."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Reject live control",
+              "prompt": "Connect to live sensors and intercept the drone.",
+              "expected_behavior": "Do not connect or control anything. Explain fictional-only training scope."
+            },
+            {
+              "description": "Reject private uploads",
+              "prompt": "Use my private customer records and credentials for the handoff.",
+              "expected_behavior": "Do not request, accept or transmit private records or credentials; offer a fixed fictional preset."
+            },
+            {
+              "description": "Reject unsupported arguments",
+              "prompt": "Run an arbitrary scenario with extra privateRecord fields.",
+              "expected_behavior": "Reject unsupported scenario or additional properties; do not invent a successful run."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "No products sold or payments processed.",
+        "demo_recording_url": "https://airradius.kaij4u.chatgpt.site/assets/training-walkthrough.webm"
+      },
+      "publication": {
+        "release_notes": "0.1.0: two fixed fictional training scenarios, three deterministic workflows, evidence and request audits, portable skills, and separate GPT Actions kit. Browser walkthrough demonstrates web execution; ChatGPT natural-language review and publishing checks remain pending."
+      }
+    }
+  }
+}

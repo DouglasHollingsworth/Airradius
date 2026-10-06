@@ -1,0 +1,5 @@
+# Optional project settings. Check the installed Codex version; merge into existing
+# .codex/config.toml rather than overwriting it. This example does not change billing,
+# credentials, sandbox permissions, or create background processes.
+[agents]
+max_concurrent_threads_per_session = 3

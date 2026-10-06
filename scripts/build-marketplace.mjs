@@ -1,0 +1,13 @@
+import {build} from 'esbuild';
+import {mkdir,cp,rm,lstat,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+const root=process.cwd(),out=path.resolve(root,'marketplace/build');
+if(path.dirname(out)!==path.resolve(root,'marketplace')||path.basename(out)!=='build')throw Error('Unsafe marketplace destination');
+if((await lstat(out).catch(()=>null))?.isSymbolicLink())throw Error('Destination cannot be a symlink');
+await rm(out,{recursive:true,force:true});await mkdir(path.join(out,'server'),{recursive:true});
+await cp(path.join(root,'dist'),path.join(out,'client'),{recursive:true});
+const result=await build({absWorkingDir:root,entryPoints:[path.join(root,'marketplace/server/worker.mjs')],outfile:path.join(out,'server/index.js'),tsconfigRaw:{},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,legalComments:'eof',metafile:true});
+await mkdir(path.join(out,'.openai'),{recursive:true});
+await writeFile(path.join(out,'.openai/hosting.json'),JSON.stringify({project_id:'appgprj_6ac3cf0a56f08191a3faa14504a6bfd7',capabilities:['mcp']},null,2));
+await writeFile(path.join(out,'bundle-manifest.json'),JSON.stringify({dataScope:'BUILT_IN_FICTIONAL_PRESETS_ONLY',runtime:'SITES_WORKER',inputs:Object.keys(result.metafile.inputs),outputs:result.metafile.outputs},null,2));
+console.log(`Built public assets and stateless MCP Worker (${Object.values(result.metafile.outputs)[0].bytes} bytes).`);

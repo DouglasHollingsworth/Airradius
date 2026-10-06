@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://airradius.vercel.app/sitemap.xml
