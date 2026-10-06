@@ -7,7 +7,7 @@ await rm(out,{recursive:true,force:true});
 await mkdir(out,{recursive:true});
 // Explicit public allowlist. Instructions, specs, source archives, credentials,
 // tests and all private projects stay outside the published artifact.
-const entries=['index.html','about','card','demo','start','css','js','assets','404.html','robots.txt','sitemap.xml','privacy.html','manifest.webmanifest'];
+const entries=['index.html','about','card','demo','start','connect','support','css','js','assets','404.html','robots.txt','sitemap.xml','privacy.html','terms.html','manifest.webmanifest'];
 for(const name of entries) await cp(path.join(root,name),path.join(out,name),{recursive:true});
 const files=[];
 async function walk(dir){for(const name of await readdir(dir)){const p=path.join(dir,name);if((await stat(p)).isDirectory())await walk(p);else files.push(path.relative(out,p).replaceAll('\\','/'));}}

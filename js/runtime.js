@@ -1,7 +1,6 @@
 // Public fictional, on-demand deterministic helpers. No network or private adapters.
 const implemented = ['event-correlator','operator-handoff-coordinator','replay-aar-analyst'];
 const roles = ['digital-moc-coordinator','sensor-fusion-analyst','rf-em-awareness-analyst','geospatial-analyst',...implemented,'open-source-integration-scout'];
-const runs = [], cache = new Map(), drafts = new Map();
 const copy = value => JSON.parse(JSON.stringify(value));
 const fail = (code,message) => { throw Object.assign(new Error(message),{code}); };
 const text = v => typeof v === 'string' && v.length > 0 && v.length <= 1000;
@@ -25,10 +24,13 @@ export function validateCase(c) {
   }
   return true;
 }
-export function getRunLog() { return copy(runs); }
-export function getRoleRegistry() { return roles.map(id=>({id,historicalWorkflowMapping:'AirRadius Operations',implementationStatus:implemented.includes(id)?'IMPLEMENTED_DETERMINISTIC':'NOT_IMPLEMENTED',trigger:'MANUAL_ONLY',executionStatus:runs.findLast(r=>r.agentId===id)?.status ?? 'NEVER_RUN',lastRunId:runs.findLast(r=>r.agentId===id)?.runId ?? null})); }
+export function createRuntime({auditScope='BROWSER_SESSION'}={}) {
+  if(!['BROWSER_SESSION','REQUEST_ONLY'].includes(auditScope)) fail('SCOPE','Unknown audit scope');
+  const runs = [], cache = new Map(), drafts = new Map();
+function getRunLog() { return copy(runs); }
+function getRoleRegistry() { return roles.map(id=>({id,historicalWorkflowMapping:'AirRadius Operations',implementationStatus:implemented.includes(id)?'IMPLEMENTED_DETERMINISTIC':'NOT_IMPLEMENTED',trigger:'MANUAL_ONLY',executionStatus:runs.findLast(r=>r.agentId===id)?.status ?? 'NEVER_RUN',lastRunId:runs.findLast(r=>r.agentId===id)?.runId ?? null})); }
 function statement(text,evidenceRefs) { return {text,evidenceRefs}; }
-export async function runWorkflow(agentId,c,options={}) {
+async function runWorkflow(agentId,c,options={}) {
   if(!roles.includes(agentId)) fail('AGENT','Unknown role');
   const actor=options.actor??'demo-operator';
   const signature=JSON.stringify([agentId,c,actor]);
@@ -39,7 +41,7 @@ export async function runWorkflow(agentId,c,options={}) {
 }
 async function execute(agentId,c,options,actor) {
   const now=()=>new Date().toISOString(), start=Date.now(), timeout=options.timeoutMs??1000;
-  const r={schemaVersion:'0.1.0',runId:`run-${globalThis.crypto?.randomUUID?.()??`${Date.now()}-${runs.length}`}`,agentId,caseId:text(c?.id)?c.id:'invalid-case',dataMode:['SIMULATED','REPLAY'].includes(c?.dataMode)?c.dataMode:'SIMULATED',executionKind:'DETERMINISTIC',status:'QUEUED',startedAt:null,finishedAt:null,engine:{name:'airradius-fictional-rules',version:'1.0.0',provider:null,model:null},inputRefs:[],facts:[],inferences:[],limitations:['Fictional public exercise only; no live feeds, identity verification or operational control.','Deterministic rules, not model-backed execution. Spatial values are illustrative exercise units.','Audit is browser/session memory, not authenticated or tamper-proof storage.'],recommendations:[],usage:{inputTokens:null,outputTokens:null,costUsd:null},approvalRequired:true,error:null};
+  const r={schemaVersion:'0.1.0',runId:`run-${globalThis.crypto?.randomUUID?.()??`${Date.now()}-${runs.length}`}`,agentId,caseId:text(c?.id)?c.id:'invalid-case',dataMode:['SIMULATED','REPLAY'].includes(c?.dataMode)?c.dataMode:'SIMULATED',executionKind:'DETERMINISTIC',status:'QUEUED',startedAt:null,finishedAt:null,engine:{name:'airradius-fictional-rules',version:'1.0.0',provider:null,model:null},inputRefs:[],facts:[],inferences:[],limitations:['Fictional public exercise only; no live feeds, identity verification or operational control.','Deterministic rules, not model-backed execution. Spatial values are illustrative exercise units.',auditScope==='REQUEST_ONLY'?'Audit exists for this fictional tool request only; no persistent session or tamper-proof storage.':'Audit is browser/session memory, not authenticated or tamper-proof storage.'],recommendations:[],usage:{inputTokens:null,outputTokens:null,costUsd:null},approvalRequired:true,error:null};
   const audit={runId:r.runId,agentId,caseId:r.caseId,actor,inputVersion:c?.version??null,status:r.status,engine:copy(r.engine),usage:copy(r.usage),transitions:[{state:'QUEUED',at:now()}]}; runs.push(audit);
   function transition(state) { r.status=state;audit.status=state;audit.transitions.push({state,at:now()});options.onState?.(copy(r)); }
   function check() { if(options.signal?.aborted) fail('CANCELED','Run canceled');if(!Number.isFinite(timeout)||timeout<=0||Date.now()-start>=timeout) fail('TIMEOUT','Run exceeded deadline'); }
@@ -85,7 +87,7 @@ async function execute(agentId,c,options,actor) {
   if(drafts.has(r.runId)) drafts.get(r.runId).result=JSON.stringify(r);
   return r;
 }
-export function approveHandoff(c,result,actor,expectedVersion) {
+function approveHandoff(c,result,actor,expectedVersion) {
   validateCase(c);const d=drafts.get(result?.runId);
   if(c.owner!==actor||!d||d.actor!==actor) fail('AUTHORIZATION','Only the current exercise owner can approve a locally executed draft');
   if(d.approved) fail('ALREADY_APPROVED','Draft already approved');
@@ -95,3 +97,8 @@ export function approveHandoff(c,result,actor,expectedVersion) {
   const next=copy(c);next.version++;next.actions.push({id:`approval-${result.runId}`,type:'HANDOFF_APPROVED',at:new Date().toISOString(),actor,text:'Human approved the fictional handoff draft; no outbound message or operational action.',evidenceRefs:[`case:${c.id}`]});validateCase(next);d.approved=true;
   const audit=runs.find(r=>r.runId===result.runId);audit.approval={actor,at:new Date().toISOString(),beforeVersion:c.version,afterVersion:next.version};return next;
 }
+
+return {getRunLog,getRoleRegistry,runWorkflow,approveHandoff};
+}
+const browserRuntime=createRuntime();
+export const {getRunLog,getRoleRegistry,runWorkflow,approveHandoff}=browserRuntime;

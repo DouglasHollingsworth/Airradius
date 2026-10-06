@@ -1,0 +1,953 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AirRadius Training Actions",
+    "version": "0.1.0",
+    "description": "Three read-only, preset-only fictional training workflows. No model calls, imports, private records or operational actions.",
+    "termsOfService": "https://airradius.kaij4u.chatgpt.site/terms.html"
+  },
+  "servers": [
+    {
+      "url": "https://airradius.kaij4u.chatgpt.site"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/training-api/v1/correlate": {
+      "get": {
+        "operationId": "airradius_correlate_events",
+        "summary": "Correlate fictional AirRadius events",
+        "description": "Analyze a selected built-in fictional scenario for duplicate candidates, delayed ingestion and proximity hypotheses. Results are SIMULATED deterministic drafts with evidence and an audit. No live data or private records.",
+        "x-openai-isConsequential": false,
+        "security": [],
+        "parameters": [
+          {
+            "name": "scenario",
+            "in": "query",
+            "required": true,
+            "description": "Select a built-in fictional training preset. Do not send case data, private records, personal information or credentials.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "duplicate-and-delay",
+                "separated-observations"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Executed fictional workflow, full source evidence and request-only audit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrainingOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unsupported, repeated, missing or extra input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Execution failed; do not invent a successful result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/training-api/v1/handoff": {
+      "get": {
+        "operationId": "airradius_draft_handoff",
+        "summary": "Draft a fictional AirRadius handoff",
+        "description": "Draft a briefing from a selected built-in fictional case. Returns a SIMULATED deterministic training draft with evidence and limitations. Does not send, approve or assign a handoff.",
+        "x-openai-isConsequential": false,
+        "security": [],
+        "parameters": [
+          {
+            "name": "scenario",
+            "in": "query",
+            "required": true,
+            "description": "Select a built-in fictional training preset. Do not send case data, private records, personal information or credentials.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "duplicate-and-delay",
+                "separated-observations"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Executed fictional workflow, full source evidence and request-only audit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrainingOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unsupported, repeated, missing or extra input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Execution failed; do not invent a successful result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/training-api/v1/replay": {
+      "get": {
+        "operationId": "airradius_analyze_replay",
+        "summary": "Analyze a fictional AirRadius replay",
+        "description": "Reconstruct a selected fictional observation/action timeline. Returns a REPLAY deterministic after-action draft with evidence, uncertainty and request audit. No live sensing or operational control.",
+        "x-openai-isConsequential": false,
+        "security": [],
+        "parameters": [
+          {
+            "name": "scenario",
+            "in": "query",
+            "required": true,
+            "description": "Select a built-in fictional training preset. Do not send case data, private records, personal information or credentials.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "duplicate-and-delay",
+                "separated-observations"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Executed fictional workflow, full source evidence and request-only audit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrainingOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unsupported, repeated, missing or extra input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Execution failed; do not invent a successful result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TrainingOutput": {
+        "type": "object",
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "enum": [
+              "duplicate-and-delay",
+              "separated-observations"
+            ]
+          },
+          "fixture": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "owner": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "OPEN",
+                  "CLOSED",
+                  "REOPENED"
+                ]
+              },
+              "dataMode": {
+                "type": "string",
+                "enum": [
+                  "SIMULATED",
+                  "REPLAY"
+                ]
+              },
+              "fictional": {
+                "type": "boolean",
+                "const": true
+              },
+              "observations": {
+                "minItems": 1,
+                "maxItems": 100,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "observedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                    },
+                    "ingestedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                    },
+                    "x": {
+                      "type": "number",
+                      "minimum": -10000,
+                      "maximum": 10000
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -10000,
+                      "maximum": 10000
+                    },
+                    "identity": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "source",
+                    "observedAt",
+                    "ingestedAt",
+                    "x",
+                    "y",
+                    "identity"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "actions": {
+                "maxItems": 100,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "NOTE",
+                        "ASSIGN",
+                        "CLOSE",
+                        "REOPEN",
+                        "HANDOFF_APPROVED"
+                      ]
+                    },
+                    "at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                    },
+                    "actor": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidenceRefs": {
+                      "minItems": 1,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "type",
+                    "at",
+                    "actor",
+                    "text",
+                    "evidenceRefs"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "id",
+              "version",
+              "owner",
+              "state",
+              "dataMode",
+              "fictional",
+              "observations",
+              "actions"
+            ],
+            "additionalProperties": false
+          },
+          "result": {
+            "title": "AirRadius proposed agent run result",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaVersion",
+              "runId",
+              "agentId",
+              "caseId",
+              "dataMode",
+              "executionKind",
+              "status",
+              "startedAt",
+              "finishedAt",
+              "engine",
+              "inputRefs",
+              "facts",
+              "inferences",
+              "limitations",
+              "recommendations",
+              "usage",
+              "approvalRequired",
+              "error"
+            ],
+            "properties": {
+              "schemaVersion": {
+                "const": "0.1.0"
+              },
+              "runId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "agentId": {
+                "enum": [
+                  "digital-moc-coordinator",
+                  "sensor-fusion-analyst",
+                  "rf-em-awareness-analyst",
+                  "geospatial-analyst",
+                  "event-correlator",
+                  "operator-handoff-coordinator",
+                  "replay-aar-analyst",
+                  "open-source-integration-scout"
+                ]
+              },
+              "caseId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "dataMode": {
+                "enum": [
+                  "SIMULATED",
+                  "REPLAY",
+                  "LIVE"
+                ]
+              },
+              "executionKind": {
+                "enum": [
+                  "DETERMINISTIC",
+                  "LLM",
+                  "NOT_CONFIGURED"
+                ]
+              },
+              "status": {
+                "enum": [
+                  "QUEUED",
+                  "RUNNING",
+                  "SUCCEEDED",
+                  "FAILED",
+                  "CANCELED",
+                  "BLOCKED"
+                ]
+              },
+              "startedAt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "finishedAt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "engine": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "version",
+                  "provider",
+                  "model"
+                ],
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "version": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "provider": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "model": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "inputRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "facts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AirRadius_evidencedStatement"
+                }
+              },
+              "inferences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AirRadius_evidencedStatement"
+                }
+              },
+              "limitations": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "recommendations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "text",
+                    "evidenceRefs",
+                    "humanApprovalRequired"
+                  ],
+                  "properties": {
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidenceRefs": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "humanApprovalRequired": {
+                      "const": true
+                    }
+                  }
+                }
+              },
+              "usage": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inputTokens",
+                  "outputTokens",
+                  "costUsd"
+                ],
+                "properties": {
+                  "inputTokens": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "outputTokens": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "costUsd": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "minimum": 0
+                  }
+                }
+              },
+              "approvalRequired": {
+                "const": true
+              },
+              "error": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": false,
+                "required": [
+                  "code",
+                  "message"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "const": "SUCCEEDED"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "startedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "inputRefs": {
+                      "minItems": 1
+                    },
+                    "executionKind": {
+                      "enum": [
+                        "DETERMINISTIC",
+                        "LLM"
+                      ]
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "executionKind": {
+                      "const": "LLM"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "engine": {
+                      "properties": {
+                        "provider": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "model": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "executionKind": {
+                      "const": "NOT_CONFIGURED"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "status": {
+                      "const": "BLOCKED"
+                    },
+                    "error": {
+                      "type": "object"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "FAILED",
+                        "BLOCKED"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "error": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "audit": {
+            "maxItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "runId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "agentId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "caseId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "actor": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "inputVersion": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 9007199254740991
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "QUEUED",
+                    "RUNNING",
+                    "SUCCEEDED",
+                    "FAILED",
+                    "CANCELED",
+                    "BLOCKED"
+                  ]
+                },
+                "engine": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "version": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "provider": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "model": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "version",
+                    "provider",
+                    "model"
+                  ],
+                  "additionalProperties": false
+                },
+                "usage": {
+                  "type": "object",
+                  "properties": {
+                    "inputTokens": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 9007199254740991
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "outputTokens": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 9007199254740991
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "costUsd": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "inputTokens",
+                    "outputTokens",
+                    "costUsd"
+                  ],
+                  "additionalProperties": false
+                },
+                "transitions": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "state": {
+                        "type": "string",
+                        "enum": [
+                          "QUEUED",
+                          "RUNNING",
+                          "SUCCEEDED",
+                          "FAILED",
+                          "CANCELED",
+                          "BLOCKED"
+                        ]
+                      },
+                      "at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                      }
+                    },
+                    "required": [
+                      "state",
+                      "at"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "finishedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                },
+                "error": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "message": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "runId",
+                "agentId",
+                "caseId",
+                "actor",
+                "inputVersion",
+                "status",
+                "engine",
+                "usage",
+                "transitions",
+                "finishedAt",
+                "error"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "storageScope": {
+            "type": "string",
+            "const": "REQUEST_ONLY"
+          },
+          "humanReview": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "scenario",
+          "fixture",
+          "result",
+          "audit",
+          "storageScope",
+          "humanReview"
+        ],
+        "additionalProperties": false
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "AirRadius_evidencedStatement": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "evidenceRefs"
+        ],
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

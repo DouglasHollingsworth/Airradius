@@ -1,12 +1,12 @@
 # AirRadius
 
-Responsive public presentation, digital contact card and fictional on-demand operations demo. Static HTML/CSS/ES modules; no runtime server, external models, analytics, paid APIs, live sensors or schedules.
+Responsive public presentation, digital contact card and fictional on-demand operations demo. Static HTML/CSS/ES modules with a separate stateless training Worker for MCP and GPT Actions. No external model calls, application analytics, paid APIs, live sensors or schedules.
 
 ## Run
 
 Node 24: `npm ci`, `npm run build`, `npm start` (http://127.0.0.1:4173).
 Run `npm test`, `npm run check:release`, `npm run test:browser`, and `npm audit`.
-Browser checks use installed Chrome by default; configure `CHROME_PATH` if needed. Results and screenshots are written to the task outputs folder by the supplied harness. All dependencies are build/test-only and locked.
+Browser checks use installed Chrome by default; configure `CHROME_PATH` if needed. Results and screenshots are written to the task outputs folder by the supplied harness. Dependencies are pinned; the static frontend has no runtime dependencies, while the optional marketplace server bundles the official MCP SDK, Zod and a Worker-compatible schema validator.
 
 ## Public boundary
 
@@ -22,3 +22,5 @@ Existing AirRadius Sites projects remain separate, preserving their audiences an
 
 
 Phone and commercial additions (6 October 2026): /start/ creates a nonbinding proposed pilot brief; public receiving contact is unconfigured until owner supplied. iPhone Safari Share → Add to Home Screen provides a web shortcut; network required. Current About/card changes from Sites version 8 were preserved. Private CEO financial planning and internal business documents remain outside this repository. See docs/COMMERCIAL.md.
+
+Marketplace additions: `/connect/` runs two built-in fictional training presets through three deterministic workflows. `npm run build:marketplace`, `npm run start:marketplace`, `npm run test:marketplace`, `node scripts/check-marketplace.mjs` and `node scripts/verify-marketplace.mjs` cover the separate server/package surfaces. See docs/MARKETPLACE_RELEASE.md for schema setup, actual evidence, remaining publisher/account gates and rollback. `marketplace/plugin/` is a portable directory package; `marketplace/gpt-store/` is a Builder/Actions kit. Neither is submitted, approved or installed by defining these files.

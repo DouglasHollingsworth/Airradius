@@ -1,0 +1,32 @@
+{
+  "status": "MARKETPLACE_NOT_SUBMITTED",
+  "directoryStatus": "TEST BUILD",
+  "displayName": "AirRadius Training",
+  "shortDescription": "Fictional airspace workflows",
+  "longDescription": "Practice evidence-backed correlation, draft handoffs and replay review using two fixed fictional scenarios. The server executes deterministic rules and returns evidence references, modes, limitations and audit information. No live sensing or operational control.",
+  "developerName": "Douglas Hollingsworth",
+  "category": "Productivity",
+  "capabilities": [
+    "MCP",
+    "Skills"
+  ],
+  "websiteURL": "https://airradius.kaij4u.chatgpt.site/connect/",
+  "supportURL": "https://airradius.kaij4u.chatgpt.site/support/",
+  "privacyPolicyURL": "https://airradius.kaij4u.chatgpt.site/privacy.html",
+  "termsOfServiceURL": "https://airradius.kaij4u.chatgpt.site/terms.html",
+  "defaultPrompt": [
+    "Correlate the duplicate-and-delay fictional scenario.",
+    "Draft a training handoff with evidence and limitations.",
+    "Review the separated-observations replay."
+  ],
+  "brandColor": "#008CFF",
+  "brandColorDark": "#00BFFF",
+  "composerIcon": "./assets/icon.png",
+  "logo": "./assets/logo.png",
+  "missing": [
+    "Verified publisher identity and confirmed contact",
+    "Production walkthrough URL",
+    "Owner review of policies and platform logs",
+    "Directory eligibility and quality review"
+  ]
+}
