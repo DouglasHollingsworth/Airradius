@@ -7,3 +7,6 @@ The six WebP images are individual artwork crops of the owner-supplied approved 
 - site-qr.svg, card-wide.png and card-portrait.png: generated exports with the canonical https://airradius.vercel.app URL. QR generation/decode evidence is recorded in coordinator validation.
 - airradius.vcf: known founder, organization, title and canonical website only. No phone or email inferred from artwork.
 Owner-provided reference artwork licensing is owner-supplied permission for this implementation; no independent stock license is claimed.
+
+## About page visual refresh
+about-horizon-v2.webp: generated concept artwork for AirRadius with the built-in image generation tool, October 5, 2026. Brief: civilian drone above a coastal city at blue hour, deep navy and restrained cyan, cinematic photographic quality, negative space, no text or military aircraft. Illustrative scene, not a customer deployment. Local Rubik web fonts subset from the primary runtime; copyright notice and full SIL Open Font License included in assets/fonts/LICENSE.txt.

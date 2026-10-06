@@ -7,7 +7,7 @@ const security={'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-ori
 export const server=http.createServer(async(req,res)=>{try{
  let route=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
  if(req.method!=='GET'&&req.method!=='HEAD'){res.writeHead(405,security);res.end();return;}
- if(/(?:^|\/)(?:\.\.?|ceo|pilot|private|api|docs|specs|\.codex)(?:\/|\.|$)/i.test(route)) throw Error('denied');
+ if(/^\/(?:ceo|pilot|growth)(?:\/|\.|$)/i.test(route)||/(?:^|\/)(?:\.\.?|private|api|docs|specs|\.codex)(?:\/|\.|$)/i.test(route)) throw Error('denied');
  let file=path.resolve(root,'.'+route);if(!file.startsWith(root+path.sep)&&file!==root)throw Error('denied');
  if((await stat(file)).isDirectory())file=path.join(file,'index.html');
  const data=await readFile(file);res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream',...security});res.end(req.method==='HEAD'?undefined:data);

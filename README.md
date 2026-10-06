@@ -19,3 +19,6 @@ The demo accepts bounded, labelled fictional SIMULATED/REPLAY JSON only. No LIVE
 Canonical target: https://airradius.vercel.app. The current team is Hobby (owner-confirmed). Production publication of this business site on that plan is blocked pending an eligible account decision; no upgrade or provider switch was performed. Local build success is not a Vercel deployment.
 
 Existing AirRadius Sites projects remain separate, preserving their audiences and data. See docs/ROLLBACK.md and the release report for actual published versions.
+
+
+Phone and commercial additions (6 October 2026): /start/ creates a nonbinding proposed pilot brief; public receiving contact is unconfigured until owner supplied. iPhone Safari Share → Add to Home Screen provides a web shortcut; network required. Current About/card changes from Sites version 8 were preserved. Private CEO financial planning and internal business documents remain outside this repository. See docs/COMMERCIAL.md.
