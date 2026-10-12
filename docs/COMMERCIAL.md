@@ -1,6 +1,6 @@
 # Phone-ready commercial scope
 
-Prepared 6 October 2026. `/start/` generates a nonbinding pilot brief using non-sensitive selectors, with a run ID, PLANNING mode, input/rate references, limitations and local audit. Prices are proposed assumptions. No lead submission, payment, contract, private customer processing, background job or model call is implemented.
+Updated 12 October 2026. `/start/` generates a nonbinding pilot brief using non-sensitive selectors, with a run ID, PLANNING mode, input/rule references, limitations and local audit. Prices are unconfirmed and exported as null; founder confirmation is required. No lead submission, payment, contract, private customer processing, background job or model call is implemented.
 
 The approved public receiving channel lives in `js/contact-config.js`. Until the owner supplies one, it stays null and the interface offers downloads/manual sharing. A configured email opens a customer-initiated draft; it does not send. Never add credentials or private records to this module.
 
