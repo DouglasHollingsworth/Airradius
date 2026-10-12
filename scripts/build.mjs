@@ -9,6 +9,12 @@ await mkdir(out,{recursive:true});
 // tests and all private projects stay outside the published artifact.
 const entries=['index.html','about','card','demo','start','connect','support','css','js','assets','404.html','robots.txt','sitemap.xml','privacy.html','terms.html','manifest.webmanifest'];
 for(const name of entries) await cp(path.join(root,name),path.join(out,name),{recursive:true});
+// These two reviewed files are the only exercise data shipped to the browser.
+const trainingAssets=path.join(out,'assets','training');
+await mkdir(trainingAssets,{recursive:true});
+for(const name of ['east-gate-ambiguity.fixture.json','east-gate-ambiguity.rules.json']) {
+  await cp(path.join(root,'specs',name),path.join(trainingAssets,name));
+}
 const files=[];
 async function walk(dir){for(const name of await readdir(dir)){const p=path.join(dir,name);if((await stat(p)).isDirectory())await walk(p);else files.push(path.relative(out,p).replaceAll('\\','/'));}}
 await walk(out); await writeFile(path.join(out,'public-manifest.json'),JSON.stringify({dataMode:'SIMULATED',files},null,2));

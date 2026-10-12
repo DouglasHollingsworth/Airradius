@@ -4,7 +4,7 @@ The six WebP images are individual artwork crops of the owner-supplied approved 
 - drone-sunset.webp: 02-approved-homepage-and-card.png rectangle (477,150)-(762,418), clean drone/airport sunset artwork.
 - infrastructure.webp, airport.webp, venues.webp, safety.webp: individual use-case artwork crops from reference 01, without accompanying UI labels.
 - logo.svg: original implementation of the approved four-rotor drone/radar identity; no third-party font assets. Wordmark uses system Arial/Helvetica.
-- site-qr.svg, card-wide.png and card-portrait.png: generated exports with the canonical https://airradius.vercel.app URL. QR generation/decode evidence is recorded in coordinator validation.
+- site-qr.svg, card-wide.png and card-portrait.png: generated exports with the canonical https://airradius.kaij4u.chatgpt.site URL. QR generation/decode evidence is recorded in coordinator validation.
 - airradius.vcf: known founder, organization, title and canonical website only. No phone or email inferred from artwork.
 Owner-provided reference artwork licensing is owner-supplied permission for this implementation; no independent stock license is claimed.
 

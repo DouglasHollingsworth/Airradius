@@ -1,0 +1,47 @@
+{
+  "ruleset_id": "east-gate-ambiguity-rules-v1",
+  "purpose": "Deterministic, fictional exercise only",
+  "deduplication": {
+    "applies_to": "radar_observation",
+    "key_fields": ["sensor_id", "track_id", "observed_s"],
+    "keep": "earliest_arrived_event",
+    "preserve_duplicate_event_ids_in_audit": true
+  },
+  "time": {
+    "ordering_field": "observed_s",
+    "arrival_field": "arrived_s",
+    "out_of_order_definition": "An event whose observed_s is less than the greatest observed_s already received by arrival time.",
+    "exercise_clock_s": 60,
+    "freshness_field": "observed_s",
+    "stale_after_s": 45,
+    "stale_comparison": "age_s >= stale_after_s"
+  },
+  "association": {
+    "coordinate_units": "metres",
+    "track_spatial_radius_m": 100,
+    "event_time_window_s": 30,
+    "camera": "Associate classification observations to a radar track when both spatial and time gates pass; preserve each label and its source evidence.",
+    "remote_id": "Associate only when both gates pass; otherwise retain as a separate report.",
+    "rf": "A time-window match may be retained as context only. Never infer emitter-to-track identity or causation from this rule."
+  },
+  "late_evidence": {
+    "applies_to": "camera_classification",
+    "maximum_arrival_lag_s": 10,
+    "excluded_when": "arrived_s - observed_s > maximum_arrival_lag_s",
+    "retention": "Keep original event in fixture/audit input; exclude it from current correlation result."
+  },
+  "sensor_health": {
+    "offline_status": "offline",
+    "result": "Emit coverage_loss for the affected sensor; do not infer missing observations."
+  },
+  "identity_and_threat": {
+    "conflicting_labels": "Preserve all labels; report identity as unidentified when evidence conflicts.",
+    "threat_status": "undetermined unless an independently defined and validated rule establishes otherwise."
+  },
+  "safety": {
+    "mode": "SIMULATED",
+    "operational_actions": false,
+    "live_sensor_access": false,
+    "outbound_messages": false
+  }
+}

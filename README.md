@@ -16,7 +16,7 @@ The demo accepts bounded, labelled fictional SIMULATED/REPLAY JSON only. No LIVE
 
 ## Release
 
-Canonical target: https://airradius.vercel.app. The current team is Hobby (owner-confirmed). Production publication of this business site on that plan is blocked pending an eligible account decision; no upgrade or provider switch was performed. Local build success is not a Vercel deployment.
+Canonical target: https://airradius.kaij4u.chatgpt.site. The current team is Hobby (owner-confirmed). Production publication of this business site on that plan is blocked pending an eligible account decision; no upgrade or provider switch was performed. Local build success is not a Vercel deployment.
 
 Existing AirRadius Sites projects remain separate, preserving their audiences and data. See docs/ROLLBACK.md and the release report for actual published versions.
 
