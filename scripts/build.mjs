@@ -7,7 +7,7 @@ await rm(out,{recursive:true,force:true});
 await mkdir(out,{recursive:true});
 // Explicit public allowlist. Instructions, specs, source archives, credentials,
 // tests and all private projects stay outside the published artifact.
-const entries=['index.html','about','card','demo','start','connect','support','css','js','assets','404.html','robots.txt','sitemap.xml','privacy.html','terms.html','manifest.webmanifest'];
+const entries=['index.html','about','card','business-card','demo','start','connect','support','css','js','assets','404.html','robots.txt','sitemap.xml','privacy.html','terms.html','manifest.webmanifest'];
 for(const name of entries) await cp(path.join(root,name),path.join(out,name),{recursive:true});
 // These two reviewed files are the only exercise data shipped to the browser.
 const trainingAssets=path.join(out,'assets','training');
