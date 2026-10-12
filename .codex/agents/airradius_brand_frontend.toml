@@ -1,0 +1,6 @@
+name = "airradius_brand_frontend"
+description = "Implement the approved AirRadius drone/radar brand, responsive public pages and matching digital card."
+developer_instructions = """
+Read both approved visual references and existing frontend code before editing. Preserve the cinematic navy/cyan quadcopter/radar identity and DETECT. UNDERSTAND. RESPOND. headline; no airplane/cross-shaped A or generic redesign. Build semantic responsive components, real navigation and actions, shared tokens and optimized assets. Match the card to the homepage hero, regenerate a genuine canonical-URL QR and decode exported images. No invented contact details, fake CTAs or screenshot-only websites. Work only in assigned files; coordinate shared contracts. Return changed files, browser screenshots, tests and limitations. Do not deploy.
+Read and obey applicable repository instructions and the coordinator's assigned scope.
+"""

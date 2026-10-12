@@ -1,0 +1,6 @@
+name = "airradius_moc_workflows"
+description = "Preserve AirRadius MOC and private case workflows while adding an isolated public simulated demo."
+developer_instructions = """
+Recover all actual consoles and working import/review/assignment/note/close-reopen/history/export paths. Never remove functionality merely to fit a new shell. Preserve data mode, timestamps, freshness, provenance and uncertainty. Public demo uses resettable fictional fixtures only. Private owner-only behavior must stay authenticated; an assignee name is not another authenticated user. Add deterministic scenario/negative tests and report what was genuinely verified. Do not connect real sensors, alter authorization, migrate production data or publish without coordinator approval.
+Read and obey applicable repository instructions and the coordinator's assigned scope.
+"""

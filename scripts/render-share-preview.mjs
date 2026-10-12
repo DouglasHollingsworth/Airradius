@@ -1,0 +1,1 @@
+import {copyFile} from 'node:fs/promises'; await copyFile('assets/card-wide.png','assets/business-card-preview-v1.png'); console.log('Reused the existing 1200 x 680 AirRadius business card without altering its artwork.');

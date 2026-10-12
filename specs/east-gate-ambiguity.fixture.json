@@ -1,0 +1,79 @@
+{
+  "fixture_id": "east-gate-ambiguity-v1",
+  "title": "East Gate Ambiguity",
+  "data_mode": "SIMULATED",
+  "execution_kind": "DETERMINISTIC_LOCAL_RULES",
+  "fictional": true,
+  "origin_utc": "2025-01-01T00:00:00Z",
+  "exercise_time_s": 60,
+  "site": {
+    "name": "Fictional East Gate Warehouse",
+    "coordinate_system": "local Cartesian metres; x=east, y=north",
+    "tracks": [
+      { "track_id": "T17", "x": 10, "y": 0 },
+      { "track_id": "T22", "x": 500, "y": 0 }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "R1", "sensor_id": "radar-east-1", "kind": "radar_observation", "track_id": "T17",
+      "observed_s": 10, "arrived_s": 12, "x": 10, "y": 0, "quality": "nominal"
+    },
+    {
+      "event_id": "R1-DUP", "sensor_id": "radar-east-1", "kind": "radar_observation", "track_id": "T17",
+      "observed_s": 10, "arrived_s": 13, "x": 10, "y": 0, "quality": "nominal"
+    },
+    {
+      "event_id": "C1", "sensor_id": "camera-east-1", "kind": "camera_classification", "track_id": null,
+      "observed_s": 12, "arrived_s": 14, "x": 12, "y": 2, "label": "drone-like", "confidence": 0.58
+    },
+    {
+      "event_id": "C2", "sensor_id": "camera-east-1", "kind": "camera_classification", "track_id": null,
+      "observed_s": 14, "arrived_s": 16, "x": 8, "y": 1, "label": "bird-like", "confidence": 0.54
+    },
+    {
+      "event_id": "F1", "sensor_id": "rf-east-1", "kind": "rf_activity", "track_id": null,
+      "observed_s": 14, "arrived_s": 17, "x": 30, "y": 0, "signal_label": "unclassified activity"
+    },
+    {
+      "event_id": "ID1", "sensor_id": "remote-id-receiver-1", "kind": "remote_id", "track_id": null,
+      "observed_s": 17, "arrived_s": 18, "x": -500, "y": 0, "reported_identity": "fictional inspection drone"
+    },
+    {
+      "event_id": "R3", "sensor_id": "radar-west-1", "kind": "radar_observation", "track_id": "T22",
+      "observed_s": 18, "arrived_s": 20, "x": 500, "y": 0, "quality": "nominal"
+    },
+    {
+      "event_id": "R2", "sensor_id": "radar-east-1", "kind": "radar_observation", "track_id": "T17",
+      "observed_s": 15, "arrived_s": 21, "x": 11, "y": 1, "quality": "nominal"
+    },
+    {
+      "event_id": "RF-OFFLINE", "sensor_id": "rf-east-1", "kind": "sensor_status", "track_id": null,
+      "observed_s": 24, "arrived_s": 25, "status": "offline"
+    },
+    {
+      "event_id": "C-OLD", "sensor_id": "camera-east-1", "kind": "camera_classification", "track_id": null,
+      "observed_s": 2, "arrived_s": 40, "x": 10, "y": 0, "label": "unclassified object", "confidence": 0.3
+    }
+  ],
+  "expected": {
+    "correlated_track_id": "T17",
+    "retained_radar_observation_ids": ["R1", "R2"],
+    "duplicate_removed_ids": ["R1-DUP"],
+    "classification_labels": ["drone-like", "bird-like"],
+    "remote_id_separate_ids": ["ID1"],
+    "rf_context_ids": ["F1"],
+    "late_excluded_ids": ["C-OLD"],
+    "coverage_loss_sensor_ids": ["rf-east-1"],
+    "out_of_order_event_ids": ["R2", "C-OLD"],
+    "track_age_s_at_exercise_time": 45,
+    "track_freshness": "stale",
+    "identity": "unidentified",
+    "threat_status": "undetermined"
+  },
+  "limitations": [
+    "This reconstructed synthetic fixture is not the original saved specialist workflow artifact.",
+    "The deterministic replay does not call the MCP endpoint, an external model, live sensors or operational systems.",
+    "Coordinates, confidence values, event IDs other than R2, and rule thresholds are explicit exercise values created for reproducibility, not recovered measurements."
+  ]
+}

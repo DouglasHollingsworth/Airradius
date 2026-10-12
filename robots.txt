@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://airradius.kaij4u.chatgpt.site/sitemap.xml

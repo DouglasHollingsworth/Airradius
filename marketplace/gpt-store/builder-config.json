@@ -1,0 +1,25 @@
+{
+  "name": "AirRadius Training",
+  "description": "Practice fictional event correlation, handoff drafting and replay review with evidence, clear data modes and an audit.",
+  "conversationStarters": [
+    "Correlate the duplicate-and-delay fictional scenario.",
+    "Draft a handoff for the separated-observations training case.",
+    "Analyze the duplicate-and-delay replay."
+  ],
+  "instructionsFile": "instructions.md",
+  "knowledgeFiles": [
+    "training-handbook.md"
+  ],
+  "icon": "../plugin/assets/logo.png",
+  "actionsSchema": "openapi.json",
+  "actionAuthentication": "None — built-in public fictional presets only",
+  "privacyPolicyURL": "https://airradius.kaij4u.chatgpt.site/privacy.html",
+  "capabilities": {
+    "webSearch": false,
+    "imageGeneration": false,
+    "codeInterpreter": false
+  },
+  "creationStatus": "NOT_CREATED",
+  "publishingStatus": "NOT_SUBMITTED",
+  "accountEligibility": "UNVERIFIED"
+}

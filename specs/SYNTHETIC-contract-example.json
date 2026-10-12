@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "runId": "fixture-not-a-real-run-001",
+  "agentId": "operator-handoff-coordinator",
+  "caseId": "synthetic-case-001",
+  "dataMode": "SIMULATED",
+  "executionKind": "DETERMINISTIC",
+  "status": "SUCCEEDED",
+  "startedAt": "2026-10-05T12:00:00Z",
+  "finishedAt": "2026-10-05T12:00:01Z",
+  "engine": {
+    "name": "illustrative-template",
+    "version": "fixture-only",
+    "provider": null,
+    "model": null
+  },
+  "inputRefs": [
+    "fixture:observation-001"
+  ],
+  "facts": [
+    {
+      "text": "The synthetic fixture contains one observation with unknown aircraft identity.",
+      "evidenceRefs": [
+        "fixture:observation-001"
+      ]
+    }
+  ],
+  "inferences": [],
+  "limitations": [
+    "CONTRACT EXAMPLE ONLY: no product agent was executed to produce this file.",
+    "The evidence reference is a synthetic identifier; runtime resolution and owner authorization must be implemented."
+  ],
+  "recommendations": [
+    {
+      "text": "Ask the authorized reviewer to record the responsible owner and next review step.",
+      "evidenceRefs": [
+        "fixture:observation-001"
+      ],
+      "humanApprovalRequired": true
+    }
+  ],
+  "usage": {
+    "inputTokens": null,
+    "outputTokens": null,
+    "costUsd": null
+  },
+  "approvalRequired": true,
+  "error": null
+}
